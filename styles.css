@@ -1,0 +1,500 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+p,
+.project-title{
+    text-align: justify;
+}
+
+#loading-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #f4f4f4;
+    z-index: 1000;
+    display: none;
+    /* Hide it initially */
+}
+
+#loading-bar {
+    width: 0;
+    height: 100%;
+    background: #ff9800;
+    /* Vibrant orange */
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background: #333;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #ff9800 3px solid;
+    /* Vibrant orange */
+    position: relative;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header ul {
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header a:hover {
+    color: #ff9800;
+}
+
+header h1 {
+    float: left;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 35px;
+    right: 20px;
+}
+@media (max-width: 980px) {
+    .menu-btn {
+        display: block;
+    }
+
+    header nav ul {
+        position: fixed;
+        right: -250px;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        background: #333;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+    }
+
+    header nav ul.show {
+        right: 0;
+        z-index: 1;
+    }
+
+    header nav ul li {
+        display: block;
+        padding: 10px 0;
+    }
+
+    header nav {
+        float: none;
+        text-align: center;
+    }
+
+    header h1 {
+        float: none;
+        text-align: left;
+    }
+
+    header nav ul {
+        text-align: center;
+        padding: 0;
+    }
+
+    header nav ul li {
+        display: block;
+        padding: 10px 0;
+    }
+
+}
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+
+    header nav ul {
+        position: fixed;
+        right: -250px;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        background: #333;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+    }
+
+    header nav ul.show {
+        right: 0;
+        z-index: 1;
+    }
+
+    header nav ul li {
+        display: block;
+        padding: 10px 0;
+    }
+
+    header nav {
+        float: none;
+        text-align: center;
+    }
+
+    header h1 {
+        float: none;
+        text-align: left;
+    }
+
+    header nav ul {
+        text-align: center;
+        padding: 0;
+    }
+
+    header nav ul li {
+        display: block;
+        padding: 10px 0;
+    }
+
+    #projects .project {
+        flex: 1 1 100%;
+        height: max-content !important;
+    }
+
+    #publications .project {
+        flex: 1 1 100%;
+        height: max-content !important;        
+    }
+}
+
+/* Section Styling */
+section {
+    padding: 20px 0;
+}
+
+.--{
+    display: none;
+}
+
+.---{
+    display: none;
+}
+
+#about,
+#projects,
+#publications,
+#skills,
+#contact {
+    padding: 20px;
+    background: #f4f4f4;
+    margin-top: 20px;
+}
+
+#about .container {
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+#about .container .content .profile-photo {
+    width: 200px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Optional: round the image if it's a profile photo */
+    margin-right: 20px; /* Space between image and text */
+}
+
+#about .container .content {
+    display: flex;
+    flex-direction: row; /* Ensures the image and text are in a row */
+    align-items: center; /* Center items vertically */
+}
+
+#about .profile-photo {
+    max-width: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+#projects .projects-grid,
+#publications .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+#projects .project,
+#publications .project {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    /* height: 300px; */
+    border: 2px solid black;
+}
+
+.project:hover {
+    height: auto;
+    /* Expand on hover */
+}
+
+#projects .project img,
+#projects .project h3,
+#publications .project img,
+#publications .project h3 {
+    transition: opacity 0.3s ease;
+}
+
+#projects .project-description,
+#publications .project-description {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow: auto;
+}
+
+#projects .project:hover img,
+#projects .project:hover h3,
+#publications .project:hover img,
+#publications .project:hover h3 {
+    opacity: 0;
+}
+
+#projects .project:hover .project-description,
+#publications .project:hover .project-description {
+    opacity: 1;
+    visibility: visible;
+    /* max-height: 100%; */
+    height: auto;
+}
+
+#projects .project img,
+#publications .project img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    #projects .project,
+    #publications .project {
+        flex: 1 1 calc(50% - 40px);
+    }
+
+    #about .container .content {
+        margin-left: 0; /* Remove left margin on smaller screens */
+        flex-direction: column; 
+    }
+}
+
+@media (max-width: 480px) {
+
+    header h1,
+    header nav {
+        float: none;
+        text-align: left;
+    }
+
+    header nav ul {
+        text-align: center;
+        padding: 0;
+    }
+
+    header nav ul li {
+        display: block;
+        padding: 10px 0;
+    }
+
+    #projects .project,
+    #publications .project {
+        flex: 1 1 100%;
+        /* width: 100%; */
+    }
+
+    .--{
+        display: block;
+    }
+}
+
+@media (max-width: 390px) {
+    #projects .projects-grid,
+    #publications .projects-grid {
+        grid-template-columns: 100%; /* Switch to single column layout */
+    }
+
+    #projects .project,
+    #publications .project {
+        width: 100%; /* Adjusted width for full width on smaller screens */
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+        margin-right: 0; /* Remove right margin to prevent overflow */
+        margin-bottom: 20px; /* Add bottom margin for spacing between projects */
+        height: auto !important; /* Ensure expanded height */
+    }
+
+    #projects .project .project-description,
+    #publications .project .project-description {
+        opacity: 1;
+        visibility: visible;
+        height: auto; /* Ensure description is visible */
+        position: relative; /* Adjust position */
+        top: 0; /* Reset top position */
+        left: 0; /* Reset left position */
+        right: 0; /* Reset right position */
+        bottom: 0; /* Reset bottom position */
+    }
+
+    #projects .project img,
+    #publications .project img,
+    #projects .project h3,
+    #publications .project h3 {
+        opacity: 1 !important; /* Ensure image and title remain visible */
+        transition: none; /* Disable transition to prevent hiding on hover */
+    }
+
+    #projects .project:hover img,
+    #projects .project:hover h3,
+    #publications .project:hover img,
+    #publications .project:hover h3 {
+        opacity: 1; /* Ensure image and title remain visible on hover */
+    }
+}
+@media (max-width: 540px) {
+    .---{
+        display: block;
+    }
+    #projects .projects-grid,
+    #publications .projects-grid {
+        grid-template-columns: 100%; /* Switch to single column layout */
+    }
+
+    #projects .project,
+    #publications .project {
+        width: 100%; /* Adjusted width for full width on smaller screens */
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+        margin-right: 0; /* Remove right margin to prevent overflow */
+        margin-bottom: 20px; /* Add bottom margin for spacing between projects */
+        height: auto !important; /* Ensure expanded height */
+    }
+
+    #projects .project .project-description,
+    #publications .project .project-description {
+        opacity: 1;
+        visibility: visible;
+        height: auto; /* Ensure description is visible */
+        position: relative; /* Adjust position */
+        top: 0; /* Reset top position */
+        left: 0; /* Reset left position */
+        right: 0; /* Reset right position */
+        bottom: 0; /* Reset bottom position */
+    }
+
+    #projects .project img,
+    #publications .project img,
+    #projects .project h3,
+    #publications .project h3 {
+        opacity: 1 !important; /* Ensure image and title remain visible */
+        transition: none; /* Disable transition to prevent hiding on hover */
+    }
+
+    #projects .project:hover img,
+    #projects .project:hover h3,
+    #publications .project:hover img,
+    #publications .project:hover h3 {
+        opacity: 1; /* Ensure image and title remain visible on hover */
+    }
+    #Hover{
+        display: none;
+    }
+}
+
+
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form input,
+form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+form button {
+    margin-top: 10px;
+    padding: 10px;
+    background: #ff9800;
+    /* Vibrant orange */
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center !important;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+footer .container p{
+    text-align: center;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ff9800;
+    /* Vibrant orange */
+}
